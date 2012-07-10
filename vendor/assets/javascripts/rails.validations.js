@@ -53,9 +53,9 @@
               .live('focusout', function() {
                 element.data('changed', true).isValid(settings.validators);
               })
-              .live('keyup', function() {
-                element.data('changed', true).isValid(settings.validators);
-              })
+              // .live('keyup', function() {
+              //   element.data('changed', true).isValid(settings.validators);
+              // })
           }
         });
 
@@ -256,7 +256,9 @@ var clientSideValidations = {
         }
       },
       confirmation: function(element, options) {
-        if (element.val() != jQuery('#' + element.attr('id') + '_confirmation').val()) {
+        // if (element.val() != jQuery('#' + element.attr('id') + '_confirmation').val()) {
+        var confirmationFieldValue = jQuery('#' + element.attr('id') + '_confirmation').val();
+        if (confirmationFieldValue && element.val() !== confirmationFieldValue) {
           return options.message;
         }
       }
